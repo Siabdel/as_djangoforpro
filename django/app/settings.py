@@ -23,8 +23,12 @@ environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = repertoire racine au meme niveau manage.py
 BASE_DIR = Path(__file__).resolve().parent.parent
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Directory project au meme niveau de settings.py
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+#PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -125,7 +129,8 @@ AUTH_PASSWORD_VALIDATORS = [
 #LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -135,8 +140,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
@@ -152,6 +157,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(BASE_DIR, 'staticfiles'),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
