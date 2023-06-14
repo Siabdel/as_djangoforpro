@@ -83,11 +83,12 @@ COPY . .
 # add bash to django user
 RUN chsh -s /bin/bash django 
 # install django ...
-RUN pip install -r $APP_HOME/requirements.txt
+# RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+RUN pip install --no-cache-dir --no-deps -r $APP_HOME/requirements.txt
 ## install dbshell
 #
 # user django
-#USER django
+USER django
 ENTRYPOINT [ "/code/entrypoint.sh" ]
 
 
